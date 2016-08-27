@@ -1,6 +1,8 @@
 # Lab2-JQuery
 First take the <a href="https://www.khanacademy.org/computing/computer-programming/html-css-js/html-css-js-intro/e/quiz--javascript-recap">Khan quiz</a> to make sure you know basic javascript. In this assignment you will implement a jquery ajax call to get the current weather. 
 
+![Example of Weather Page](Screen%20Shot%202015-02-20%20at%202.05.21%20PM.png)
+
 The weather section should do the following:
 
 1) Allow the user to type characters into a form. With each keystroke, query a <a href="https://students.cs.byu.edu/~clement/CS360/ajax/getcity.cgi?q=P">REST service</a> that will return a list of cities in utah that have those characters as a prefix. This will provide a hint to the user as to what legal values can be. Put these options into a list. These <a href="http://bioresearch.byu.edu/cs260/jquery/Lab1.html">hints</a> may be helpful.
