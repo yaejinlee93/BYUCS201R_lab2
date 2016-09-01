@@ -11,7 +11,7 @@ The weather section should do the following:
 
 3) The submit button will also query the <a href="http://www.wunderground.com/weather/api/d/docs">weatherunderground REST service</a> to get the current weather for that city. These <a href="http://students.cs.byu.edu/~clement/CS360/jquery/Lab3.html">hints</a> may be helpful.
 
-4) There is another button that will query the ____ REST service.
+4) There is another input with a button that will query the [OwlBot REST service](https://owlbot.info/api/v1/dictionary/example) for the definition.
 
 Or in other words:
 
@@ -32,7 +32,7 @@ Passoff Level | Behavior | Points
 --- | --- | ---
 Minimal Passoff | You've got the basic layout of the weather app Your basic javascript functionality works (suggestions, filling in the city box, etc.) | 45%
 Passoff | Your page is lacking one or two parts of the functionality (ex. the full cities list isn't working, or the API call isn't right, etc.) |	70%
-Basic Passoff | You have all the required functionality | 85%
-Good Passoff | You utilize the other required REST service | 95%
+Basic Passoff | You have all the required weather functionality | 80%
+Good Passoff | You utilize the other required REST service | 90%
 Perfect Passoff | Your page looks really good. This is subjective, so wow us. | 100%
 
