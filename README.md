@@ -11,7 +11,9 @@ The weather section should do the following:
 
 3) The submit button will also query the <a href="http://www.wunderground.com/weather/api/d/docs">weatherunderground REST service</a> to get the current weather for that city. These [hints](https://github.com/BYUCS260/Lab2-JQuery/wiki/Connecting-to-WeatherUnderground) may be helpful.
 
-4) There is another input where a user can type a word, with a button that will query the [OwlBot REST service](https://owlbot.info/api/v1/dictionary/example) for the definition.
+4) There is another input where a user can type a word, with a button that will query the [StackExchange REST service](https://api.stackexchange.com/docs/search) for questions with the word in the topic.  For example, if the user had entered "javascript" in the form, then you would create the following REST request
+
+https://api.stackexchange.com/2.2/search?order=desc&sort=activity&intitle=javascript&site=stackoverflow
 
 Or in other words:
 
@@ -19,7 +21,7 @@ Or in other words:
 - [ ] As you type characters in the city input, the application suggests legal values
 - [ ] When the submit button is pressed, you correctly fill in the City box
 - [ ] You make the request to the weatherunderground site and fill in the weather div
-- [ ] Users can query the OwlBot service for a definition
+- [ ] Users can query the stackExchange service for questions that have a particular word in the topic
 
 **Submit to learningsuite the URL to your live webpage, along with any comments you have that will make your assignment easier to grade. You should have utilized the github classroom link to get started with the assignment.**
 
