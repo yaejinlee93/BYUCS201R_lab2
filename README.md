@@ -23,7 +23,7 @@ Or in other words:
 - [ ] You make the request to the weatherunderground site and fill in the weather div
 - [ ] Users can query the stackExchange service for questions that have a particular word in the topic
 
-**Submit to learningsuite the URL to your live webpage, along with any comments you have that will make your assignment easier to grade. You should have utilized the github classroom link to get started with the assignment.**
+**Submit to learningsuite the URL to your live webpage, along with any comments you have that will make your assignment easier to grade. Your URL must have the form: xxx.xxx/weather.html, otherwise you might not get full credit on the lab. You should have utilized the github classroom link to get started with the assignment.**
 
 #### Grading:
 
