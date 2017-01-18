@@ -1,5 +1,6 @@
 var Lab2 = function() {
   var self = this;
+  //Make sure that your URL is in the form: xxx.xxx/labs2/weather.html
   
   self.cityInput = $("#cityField");
   self.suggestionsList = $("#txtHint");
