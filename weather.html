@@ -4,8 +4,53 @@
     <title>City Finder</title>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
+    <style type="text/css">
+      body
+      {
+        background-color : #cce0ff;
+      }
+      #page
+      {
+        background-color : #80b3ff;
+        position : relative;
+        margin-left : auto;
+        margin-right : auto;
+        margin-bottom : 10px;
+        width : 500px;
+        padding : 10px;
+        border-radius : 15px;
+        font-family : "Trebuchet MS", Helvetica, sans-serif;
+        color : white;
+      }
+      #weatherButton
+      {
+        background-color : #008CBA;
+        border-radius : 2px;
+        border : none;
+        color : white;
+        padding : 4px 12px;
+        font-size : 10px;
+        font-family : "Trebuchet MS", "Helvetica", "sans-serif";
+      }
+      #searchButton
+      {
+        background-color : #008CBA;
+        border-radius : 2px;
+        border : none;
+        color : white;
+        padding : 4px 12px;
+        font-size : 10px;
+        font-family : "Trebuchet MS", "Helvetica", "sans-serif";
+      }
+      #searchResults
+      {
+        font-family: "Times New Roman", Times, serif;
+      }
+    </style>
+
   </head>
   <body>
+    <div id="page">
     <form>
       Enter A Utah City: <input type="text" id="cityField" value=""><br>
       Suggestion: <span id="txtHint">Empty</span>
@@ -15,6 +60,16 @@
     <textarea id="displayCity">No City</textarea>
     <p>Current Weather</p>
     <div id="weather">No weather</div>
+    </div>
+
+    <div id="page">
+      <form>
+        Search (Type a word): <input type="text" id="searchStack" value="">
+        <input id="searchButton" type="submit" value="Search">
+        <p>Search Results</p>
+        <div id="searchResults">No results</div>
+      </form>
+    </div>
 
     <script>
       $(document).ready(function()
@@ -22,7 +77,7 @@
         $( "#cityField" ).keyup(function()
         {
           var url = "http://bioresearch.byu.edu/cs260/jquery/getcity.cgi?q="
-                    +$("#cityField").val();
+                    + $("#cityField").val();
           $.getJSON(url,function(data)
           {
              var everything;
@@ -42,7 +97,7 @@
          .fail(function(jqXHR, textStatus, errorThrown)
          {
            console.log('getJSON request failed! ' + textStatus);
-           console.log("incoming "+jqXHR.responseText);
+           console.log("incoming "+ jqXHR.responseText);
          })
          .always(function()
          {
@@ -57,17 +112,18 @@
 
       $("#weatherButton").click(function(e)
       {
-         var value = $("#cityField").val();
-         console.log(value);
+         var weatherValue = $("#cityField").val();
+         console.log(weatherValue);
          e.preventDefault();
-         $("#displayCity").text(value);
 
-         var myurl= "https://api.wunderground.com/api/e8403d0f71779d35/geolookup/conditions/q/UT/";
-         myurl += value;
-         myurl += ".json";
-         console.log(myurl);
+         $("#displayCity").text(weatherValue);
+
+         var weatherURL= "https://api.wunderground.com/api/e8403d0f71779d35/geolookup/conditions/q/UT/";
+         weatherURL += weatherValue;
+         weatherURL += ".json";
+         console.log(weatherURL);
          $.ajax({
-           url : myurl,
+           url : weatherURL,
            dataType : "json",
            success : function(parsed_json)
            {
@@ -75,15 +131,45 @@
              var temp_string = parsed_json['current_observation']['temperature_string'];
              var current_weather = parsed_json['current_observation']['weather'];
              everything = "<ul>";
-             everything += "<li>Location: "+location;
-             everything += "<li>Temperature: "+temp_string;
-             everything += "<li>Weather: "+current_weather;
+             everything += "<li>Location: " + location;
+             everything += "<li>Temperature: " + temp_string;
+             everything += "<li>Weather: " + current_weather;
              everything += "</ul>";
+
              $("#weather").html(everything);
            }
          });
 
        //My Key : e8403d0f71779d35
+      });
+
+      $("#searchButton").click(function(e)
+      {
+        e.preventDefault();
+        var searchValue = $("#searchStack").val();
+        console.log('search: ', searchValue);
+
+        var searchURL= "https://api.stackexchange.com/2.2/search?order=desc&sort=activity&intitle="
+                  + $("#searchStack").val() + "&site=stackoverflow";
+        console.log(searchURL);
+
+        $.ajax({
+          url : searchURL,
+          dataType : "json",
+          success : function(parsed_json)
+          {
+            console.log('parsed_json: ', parsed_json);
+            everything = "Results for "+ searchValue + ":<br><ul>" ;
+            var items = parsed_json["items"] ;
+            $.each(items, function(index, item)
+              {
+                everything += "<li><a href='" + item.link + "'>" + item.title + "</a>" ;
+              });
+            everything += "</ul>" ;
+            $("#searchResults").html(everything) ;
+          }
+        });
+
       });
 
     </script>
